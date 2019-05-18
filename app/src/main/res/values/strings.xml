@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Magic Counter</string>
+    <string name="main_max_points">Nombre maximum de points</string>
+    <string name="main_start">Démarrer la partie</string>
+    <string name="main_player1_name">Nom du joueur 1</string>
+    <string name="main_player2_name">Nom du joueur 2</string>
+    <string name="main_fill_all">Veuillez remplir tous les champs.</string>
+</resources>
