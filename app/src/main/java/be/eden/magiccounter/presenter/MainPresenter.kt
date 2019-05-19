@@ -2,7 +2,7 @@ package be.eden.magiccounter.presenter
 
 import android.content.Context
 import be.eden.magiccounter.util.PreferencesHelper
-import be.eden.magiccounter.view.MainView
+import be.eden.magiccounter.view.main.MainView
 
 class MainPresenter(private val view : MainView) : Presenter {
 

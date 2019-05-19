@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.MainActivity">
+        tools:context=".view.main.MainActivity">
 
     <!-- Nom du joueur 1 -->
     <androidx.appcompat.widget.AppCompatTextView
@@ -19,7 +19,7 @@
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
-            style="@style/BlackBold" />
+            style="@style/Label" />
 
     <!-- Nom du joueur 1 EditText -->
     <androidx.appcompat.widget.AppCompatEditText
@@ -27,9 +27,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:inputType="textPersonName"
             app:layout_constraintTop_toBottomOf="@+id/mainPlayer1Label"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
+            android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="32dp" />
 
@@ -46,7 +48,7 @@
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
-            style="@style/BlackBold"/>
+            style="@style/Label"/>
 
     <!-- Nom du joueur 2 EditText -->
     <androidx.appcompat.widget.AppCompatEditText
@@ -54,15 +56,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:inputType="textPersonName"
             app:layout_constraintTop_toBottomOf="@+id/mainPlayer2Label"
             app:layout_constraintStart_toStartOf="parent"
              android:layout_marginStart="32dp"
+            android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="32dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/mainNumberPointsLabel"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_max_points"
             android:layout_marginTop="24dp"
@@ -71,20 +75,25 @@
             android:layout_marginStart="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="32dp"
-            style="@style/BlackBold"/>
+            style="@style/Label" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/mainStartButton"/>
 
     <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/mainNumberPointsEdit"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:ems="10"
+            android:textSize="32sp"
+            android:maxLength="3"
+            android:textAlignment="center"
+            android:ems="3"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/mainNumberPointsLabel"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="32dp"/>
+            tools:text="50"
+            android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/mainStartButton"
@@ -95,6 +104,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="32dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="32dp" />
 

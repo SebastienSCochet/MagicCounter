@@ -1,4 +1,4 @@
-package be.eden.magiccounter.view
+package be.eden.magiccounter.view.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import be.eden.magiccounter.R
 import be.eden.magiccounter.presenter.MainPresenter
+import be.eden.magiccounter.view.game.GameActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {

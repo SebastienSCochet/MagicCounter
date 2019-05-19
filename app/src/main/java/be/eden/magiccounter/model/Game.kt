@@ -1,19 +1,27 @@
 package be.eden.magiccounter.model
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import java.time.LocalDateTime
-import java.time.LocalTime
+import org.joda.time.DateTime
+import org.joda.time.Duration
 
-@RequiresApi(Build.VERSION_CODES.O)
 class Game {
 
-    val creationTime = LocalDateTime.now()
-    var finishTime : LocalTime? = null
-    var time : Long? = null
+    private val creationTime : DateTime = DateTime.now()
+    private var finishTime : DateTime? = null
+    private var totalDuration : Duration? = null
 
-
+    /**
+     * Finish the game.
+     */
     fun finish(){
-        finishTime = LocalTime.now()
+        finishTime = DateTime.now()
+        totalDuration = Duration(creationTime, finishTime)
+    }
+
+    /**
+     * Returns the totalDuration from now.
+     */
+    fun durationString() : String {
+        val duration = Duration(creationTime, DateTime.now())
+        return "${duration.standardHours%24}H ${duration.standardMinutes%60}m ${duration.standardSeconds%60}s"
     }
 }
