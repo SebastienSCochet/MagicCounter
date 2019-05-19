@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
+    override fun initializeFields(player1Name: String, player2Name: String, maxScore: Int) {
+        mainNamePlayer1Edit.setText(player1Name)
+        mainNamePlayer2Edit.setText(player2Name)
+        mainNumberPointsEdit.setText(maxScore.toString())
+    }
+
     override fun showToast(text : String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
     }

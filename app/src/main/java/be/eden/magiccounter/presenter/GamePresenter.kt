@@ -1,11 +1,9 @@
 package be.eden.magiccounter.presenter
 
 import android.content.Context
-import be.eden.magiccounter.enumeration.EventType
-import be.eden.magiccounter.model.Event
-import be.eden.magiccounter.model.Game
-import be.eden.magiccounter.model.Player
-import be.eden.magiccounter.util.PreferencesHelper
+import be.eden.magiccounter.enumeration.PlayerNumber
+import be.eden.magiccounter.helper.PreferencesHelper
+import be.eden.magiccounter.model.*
 import be.eden.magiccounter.view.game.GameView
 
 class GamePresenter(private val view : GameView) : Presenter {
@@ -14,7 +12,7 @@ class GamePresenter(private val view : GameView) : Presenter {
 
     private val game = Game()
     private lateinit var players : Array<Player>
-    private var events = arrayListOf<Event>()
+    private val eventManager = EventManager()
 
     fun retrieveFields(context: Context) {
 
@@ -32,29 +30,45 @@ class GamePresenter(private val view : GameView) : Presenter {
             Player(player2Name, maxScore)
         )
 
-        events.add(Event(type = EventType.START))
-        view.updateEvents(events)
+        view.initializeLongPressListener(players)
+
+        eventManager.start()
+        eventManager.firstMove(players)
+
+        view.updateEvents(eventManager.events)
     }
 
-    fun changeLifePlayer1(damage : Int) {
-        view.editPlayer1Score(players[0].handleDamage(damage))
-        if(players[0].points == 0) {
+    fun changeLifePoints(playerNumber: PlayerNumber, damage: Int) {
+        val player : Player
+        val other : Player
+
+        when(playerNumber){
+            PlayerNumber.PLAYER1 -> {
+                player = players[0]
+                other = players[1]
+            }
+            PlayerNumber.PLAYER2 -> {
+                player = players[1]
+                other = players[0]
+            }
+        }
+
+        val points = player.handleDamage(damage)
+
+        when(playerNumber){
+            PlayerNumber.PLAYER1 -> view.editPlayer1Score(points)
+            PlayerNumber.PLAYER2 -> view.editPlayer2Score(points)
+        }
+
+        eventManager.damage(player, damage)
+
+        if(player.points <= 0) {
             game.finish()
             view.displayDuration(game.durationString())
 
-            events.add(Event(player = players[1], type = EventType.VICTORY))
-            view.updateEvents(events)
+            eventManager.victory(other)
         }
-    }
 
-    fun changeLifePlayer2(damage : Int) {
-        view.editPlayer2Score(players[1].handleDamage(damage))
-        if(players[1].points == 0) {
-            game.finish()
-            view.displayDuration(game.durationString())
-
-            events.add(Event(player = players[0], type = EventType.VICTORY))
-            view.updateEvents(events)
-        }
+        view.updateEvents(eventManager.events)
     }
 }

@@ -8,4 +8,8 @@
     <string name="duration">Durée :</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
+    <string name="damage_inflicted">dégâts infligés</string>
+    <string name="inflict">Infliger</string>
+    <string name="cancel">Annuler</string>
+    <string name="damage_healed">Dégâts soignés</string>
 </resources>

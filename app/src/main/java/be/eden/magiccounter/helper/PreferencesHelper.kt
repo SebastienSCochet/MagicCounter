@@ -1,9 +1,9 @@
-package be.eden.magiccounter.util
+package be.eden.magiccounter.helper
 
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferencesHelper(val context: Context) {
+class PreferencesHelper(context: Context) {
 
     companion object {
         const val PREF_FILE_NAME = "PREFERENCES"
@@ -23,15 +23,15 @@ class PreferencesHelper(val context: Context) {
     }
 
     var player1Name: String
-        get() = mPref.getString(PREF_KEY_NAME_P1, null)?:"Joueur 1"
+        get() = mPref.getString(PREF_KEY_NAME_P1, "")?:"Joueur 1"
         set(login) = mPref.edit().putString(PREF_KEY_NAME_P1, login).apply()
 
     var player2Name: String
-        get() = mPref.getString(PREF_KEY_NAME_P2, null)?:"Joueur 2"
+        get() = mPref.getString(PREF_KEY_NAME_P2, "")?:"Joueur 2"
         set(login) = mPref.edit().putString(PREF_KEY_NAME_P2, login).apply()
 
     var maxScore: Int
-        get() = mPref.getInt(PREF_KEY_SCORE_MAX, -1)
+        get() = mPref.getInt(PREF_KEY_SCORE_MAX, 0)
         set(max) = mPref.edit().putInt(PREF_KEY_SCORE_MAX, max).apply()
 
 }

@@ -9,12 +9,14 @@ class Event (
 ) {
     override fun toString(): String {
         return when (type) {
-            EventType.START -> "Que la partie commence !"
+            EventType.START -> "C'est l'heure du Du-du-du-du-du-duel !"
+
+            EventType.MOVE -> "${player?.name} commence."
 
             EventType.DAMAGE -> {
                 if(damages != null){
                     if(damages < 0) {
-                        "${player?.name} a subis $damages points de dégâts."
+                        "${player?.name} a subis ${damages*-1} points de dégâts."
                     } else {
                         "${player?.name} a gagné $damages points de vie."
                     }

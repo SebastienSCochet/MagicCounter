@@ -14,8 +14,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.game.GameActivity">
-            android:parentActivityName="MainActivity" >
+        <activity android:name=".view.game.GameActivity"
+                  android:parentActivityName=".view.main.MainActivity">
+
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="be.eden.magiccounter.view.main.MainActivity" />

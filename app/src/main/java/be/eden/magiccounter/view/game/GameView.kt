@@ -1,6 +1,7 @@
 package be.eden.magiccounter.view.game
 
 import be.eden.magiccounter.model.Event
+import be.eden.magiccounter.model.Player
 import be.eden.magiccounter.view.base.View
 
 interface GameView : View {
@@ -10,4 +11,5 @@ interface GameView : View {
     fun editPlayer2Score(score : Int)
     fun displayDuration(duration : String)
     fun updateEvents(events : List<Event>)
+    fun initializeLongPressListener(players: Array<Player>)
 }
