@@ -15,13 +15,15 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".view.game.GameActivity"
+                  android:screenOrientation="portrait"
                   android:parentActivityName=".view.main.MainActivity">
 
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="be.eden.magiccounter.view.main.MainActivity" />
         </activity>
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.main.MainActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
